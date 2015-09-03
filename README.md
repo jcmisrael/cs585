@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/jcmisrael/cs585.svg?branch=master)](https://travis-ci.org/jcmisrael/cs585)
 # Game Engine Development Work #
 Contained here in are all files relating to CS 585, Introduction to Game Engine Development
 

@@ -4,8 +4,8 @@ compiler:
   - gcc
   - clang
 
-install:
-  - cd /usr/src/gtest && sudo cmake . && sudo make && sudo mv libgtest* /usr/local/lib/
+before_install:
+  - "cd /usr/src/gtest && sudo cmake . && sudo make && sudo mv libgtest* /usr/local/lib/ && cd -"
 
 script:
   - cmake . && make && make test
