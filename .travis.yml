@@ -1,0 +1,18 @@
+langauge: cpp
+
+compiler:
+  - gcc
+  - clang
+
+install:
+  - cd /usr/src/gtest && sudo cmake . && sudo make && sudo mv libgtest* /usr/local/lib/
+
+script:
+  - cmake . && make && make test
+
+addons:
+  apt:
+    packages:
+      - cmake
+      - libgtest-dev
+      - build-essential
