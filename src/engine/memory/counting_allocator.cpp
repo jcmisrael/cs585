@@ -11,6 +11,12 @@ template<class T>
 int CountingAllocator<T>::totalNumReleases = 0;
 
 template<class T>
+CountingAllocator<T>::CountingAllocator(){
+    numAllocations = 0;
+    numReleases = 0;
+}
+
+template<class T>
 T* CountingAllocator<T>::get(int count){
     T* elem = new T[count];
     numAllocations += count;
