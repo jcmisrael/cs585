@@ -20,3 +20,7 @@ set (SOURCE
 
 # Construct normal executable
 add_executable (Game ${SOURCE})
+
+# Add include directories to target executable
+target_include_directories(Game PUBLIC
+  ${INCLUDES})
