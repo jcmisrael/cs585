@@ -22,4 +22,5 @@ target_link_libraries(TestGame ${GTEST_BOTH_LIBRARIES})
 target_link_libraries(TestGame ${CMAKE_THREAD_LIBS_INIT})
 
 # Add tests
-add_test(RunAllTests TestGame)
+add_test(TestCountingAllocator
+  TestGame --gtest_filter=CountingAllocatorTest*)
