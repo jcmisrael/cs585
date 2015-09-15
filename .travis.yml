@@ -1,6 +1,6 @@
 langauge: cpp
 
-sudo: false
+sudo: true
 
 compiler:
   - gcc
