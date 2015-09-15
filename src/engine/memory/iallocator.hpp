@@ -11,8 +11,8 @@ template<class T>
 class IAllocator {
 private:
 public:
-    virtual T* get(int count);
-    virtual void release(T* elem, int count);
+    virtual T* get(int count) = 0;
+    virtual void release(T* elem, int count) = 0;
 };
 
 } // End namespace sgdm

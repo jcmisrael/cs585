@@ -12,8 +12,14 @@ template<class T>
 class DefaultAllocator: public IAllocator<T> {
 private:
 public:
-    T* get(int count);
-    void release(T* elem, int count);
+    T* get(int count){
+        T* tPtr = new T[count];
+        return tPtr;
+    }
+
+    void release(T* elem, int count){
+        delete[] elem;
+    }
 };
 
 } // End namespace sgdm

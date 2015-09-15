@@ -16,15 +16,53 @@ class CountingAllocator: public IAllocator<T> {
     static int totalNumAllocations;
     static int totalNumReleases;
   public:
-    T*         get(int count);
-    void       release(T* elem, int count);
-    const int  getAllocationCount();
-    const int  getReleaseCount();
-    const int  getOutstandingCount();
-    static int getTotalAllocationCount();
-    static int getTotalReleaseCount();
-    static int getTotalOutstandingCount();
+    CountingAllocator(){
+        numAllocations = 0;
+        numReleases = 0;
+    }
+
+    T*         get(int count){
+        T* elem = new T[count];
+        numAllocations += count;
+        totalNumAllocations += count;
+        return elem;
+    }
+
+    void       release(T* elem, int count){
+        delete[] elem;
+        numReleases += count;
+        totalNumReleases += count;
+    }
+
+    const int  getAllocationCount(){
+        return numAllocations;
+    }
+
+    const int  getReleaseCount(){
+        return numReleases;
+    }
+
+    const int  getOutstandingCount(){
+        return numAllocations - numReleases;
+    }
+
+    static int getTotalAllocationCount(){
+        return totalNumAllocations;
+    }
+
+    static int getTotalReleaseCount(){
+        return totalNumReleases;
+    }
+
+    static int getTotalOutstandingCount(){
+        return totalNumAllocations - totalNumReleases;
+    }
 };
+
+template<class T>
+int CountingAllocator<T>::totalNumAllocations = 0;
+template<class T>
+int CountingAllocator<T>::totalNumReleases = 0;
 
 } // End namespace sgdm
 } // End namespace StevensDev
