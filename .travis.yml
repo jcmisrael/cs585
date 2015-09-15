@@ -1,18 +1,24 @@
 langauge: cpp
 
+sudo: false
+
 compiler:
   - gcc
   - clang
 
 before_install:
+  - "sudo add-apt-repository ppa:kubuntu-ppa/backports -y"
+  - "sudo apt-get update"
+  - "sudo apt-get install cmake=2.8.12.2-0ubuntu1~ubuntu12.04.1~ppa2"
   - "cd /usr/src/gtest && sudo cmake . && sudo make && sudo mv libgtest* /usr/local/lib/ && cd -"
 
 script:
-  - cmake . && make && make test
+  - BUILD_DIR=`pwd`/build
+  - mkdir -p ${BUILD_DIR} && cd ${BUILD_DIR}
+  - cmake .. && make && make test
 
 addons:
   apt:
     packages:
-      - cmake
       - libgtest-dev
       - build-essential
